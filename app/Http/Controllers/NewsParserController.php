@@ -9,6 +9,11 @@ use App\Entities\Parsers\UrlParsers\CurlUrlParser;
 
 class NewsParserController extends Controller
 {
+    /**
+     * Executes process of parsing news and passing data to the database
+     *
+     * @return void
+     */
     public function index()
     {
         try {
@@ -18,7 +23,7 @@ class NewsParserController extends Controller
             $blockParser = new NewsXPathBlockParser($urlParser);
 
             $news_parser = new NewsParser($blockParser);
-            $news = $news_parser->getNewsFromUrlContent("//div[@class='js-news-feed-list']/a[not(contains(@href, 'video_id'))]");
+            $news = $news_parser->getNewsFromUrlContentBySelector("//div[@class='js-news-feed-list']/a[not(contains(@href, 'video_id'))]");
 
             if (!empty($news)) {
                 $news = array_filter($news, function($item) {
@@ -30,16 +35,28 @@ class NewsParserController extends Controller
 
                     $newsPiece->save();
                 }
+
+                dump(count($news) . ' news were parsed and saved to database.');
             }
         } catch (Exception $e) {
             dd($e->getMessage());
         }
+
+        exit;
     }
 
+    /**
+     * Shows all news from the database
+     *
+     * @return void
+     */
     public function show()
     {
         $news = News::all();
 
-        dd($news);
+        foreach ($news as $newsPiece) {
+            dump($newsPiece->toArray());
+        }
+        exit;
     }
 }

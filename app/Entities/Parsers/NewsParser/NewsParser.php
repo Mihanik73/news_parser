@@ -17,7 +17,14 @@ class NewsParser extends AbstractContentParser {
         $this->newsCount = $newsCount;
     }
 
-    public function getNewsFromUrlContent(string $selector)
+    /**
+     * Gets content of news page, parses it and fills news to array
+     *
+     * @param string $selector
+     *
+     * @return array
+     */
+    public function getNewsFromUrlContentBySelector(string $selector): array
     {
         $blocksContent = $this->blockParser->getBlockContent($selector);
 

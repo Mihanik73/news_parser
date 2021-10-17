@@ -14,9 +14,5 @@ use App\Http\Controllers\NewsParserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/index', [NewsParserController::class, 'index']);
 Route::get('/show', [NewsParserController::class, 'show']);
