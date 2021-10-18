@@ -4,13 +4,12 @@ namespace App\Entities\Parsers\NewsParser;
 
 use DOMNodeList;
 use DOMElement;
-use App\Entities\Parsers\UrlParsers\CurlUrlParser;
+use App\Entities\Parsers\UrlParsers\AbstractUrlParser;
 use App\Entities\Parsers\BlockParsers\XPathBlockParser;
-use App\Entities\Parsers\Interfaces\IBlockParser;
 
-class NewsXPathBlockParser extends XPathBlockParser implements IBlockParser {
+class NewsXPathBlockParser extends XPathBlockParser {
 
-    public function __construct(CurlUrlParser $urlParser, int $linesCount = 10)
+    public function __construct(AbstractUrlParser $urlParser, int $linesCount = 10)
     {
         parent::__construct($urlParser, $linesCount);
     }

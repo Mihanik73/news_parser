@@ -2,14 +2,13 @@
 
 namespace App\Entities\Parsers\UrlParsers;
 
-use App\Entities\Parsers\Interfaces\IUrlParser;
 use App\Entities\Parsers\UrlParsers\AbstractUrlParser;
 use Exception;
 
 /**
  * Receives website's content from the given URL using CURL
  */
-class CurlUrlParser extends AbstractUrlParser implements IUrlParser {
+class CurlUrlParser extends AbstractUrlParser {
     private string $url = '';
 
     public function __construct(string $url)

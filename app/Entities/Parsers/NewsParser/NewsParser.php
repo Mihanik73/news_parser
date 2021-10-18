@@ -24,7 +24,7 @@ class NewsParser extends AbstractContentParser {
      *
      * @return array
      */
-    public function getNewsFromUrlContentBySelector(string $selector): array
+    public function getContentBySelector(string $selector): array
     {
         $blocksContent = $this->blockParser->getBlockContent($selector);
 

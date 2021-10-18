@@ -23,7 +23,7 @@ class NewsParserController extends Controller
             $blockParser = new NewsXPathBlockParser($urlParser);
 
             $news_parser = new NewsParser($blockParser);
-            $news = $news_parser->getNewsFromUrlContentBySelector("//div[@class='js-news-feed-list']/a[not(contains(@href, 'video_id'))]");
+            $news = $news_parser->getContentBySelector("//div[@class='js-news-feed-list']/a[not(contains(@href, 'video_id'))]");
 
             if (!empty($news)) {
                 $news = array_filter($news, function($item) {

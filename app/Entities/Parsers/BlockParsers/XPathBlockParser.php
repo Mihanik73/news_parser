@@ -3,7 +3,6 @@
 namespace App\Entities\Parsers\BlockParsers;
 
 use App\Entities\Parsers\BlockParsers\AbstractBlockParser;
-use App\Entities\Parsers\Interfaces\IBlockParser;
 use App\Entities\Parsers\UrlParsers\AbstractUrlParser;
 use Exception;
 use DOMNodeList;
@@ -11,7 +10,7 @@ use DOMNodeList;
 /**
  * Content parser based on XPath
  */
-class XPathBlockParser extends AbstractBlockParser implements IBlockParser {
+class XPathBlockParser extends AbstractBlockParser {
     public function __construct(AbstractUrlParser $urlParser, int $linesCount = 10)
     {
         parent::__construct($urlParser, $linesCount);

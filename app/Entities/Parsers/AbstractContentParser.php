@@ -9,4 +9,6 @@ abstract class AbstractContentParser {
     {
         $this->blockParser = $blockParser;
     }
+
+    abstract function getContentBySelector(string $selector): array;
 }
